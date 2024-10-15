@@ -19,21 +19,41 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stdio.h"
-#include "string.h"
-#include "stdbool.h"
+
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart2;
+
+/* USER CODE BEGIN PV */
+
+/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+/* USER CODE BEGIN PFP */
 
-void counter();
-_Bool password(int pin);
-void turnLed();
+/* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -49,128 +69,49 @@ int __io_putchar(int ch) {
   */
 int main(void)
 {
+
+  /* USER CODE BEGIN 1 */
+
+  /* USER CODE END 1 */
+
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
   /* Configure the system clock */
   SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  /* USER CODE BEGIN 2 */
 
-  /* The actual PIN but in reverse. Must only be 1's, 2's, and 3's */
-  int pin = 13221;
+  /* USER CODE END 2 */
 
-  /* Actual Program Run Here */
-  //_Bool pass = password(pin);
-  //counter(buttonON, count);
-  turnLed();
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    /* USER CODE END WHILE */
 
-  if (1) {
-	  //Send a signal to the other STM to stop their timer
-  } else {
-	  //Send a signal to the other STM to immediately start the speaker
+    /* USER CODE BEGIN 3 */
   }
-
-}
-
-void turnLed() {
-	while (1) {
-		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_8)) {
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-			printf("ButtonHeld");
-		} else {
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		}
-	}
+  /* USER CODE END 3 */
 }
 
 /**
- * Adds to or subtracts one from a counter when PB8 and PB9 receive input. The action (added/subtracted)
- * is printed followed by the current count number.
- * By Robin Yan.
- */
-void counter() {
-	_Bool buttonON = false;
-	int count = 0;
-	while (1) {
-		if(HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_8)) {
-			if (buttonON) {
-				count++;
-				printf("Added: %d\n\r", count);
-				buttonON = false;
-			}
-		} else if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_9)) {
-			if (buttonON) {
-				count--;
-				printf("Subtracted: %d\n\r", count);
-				buttonON = false;
-			}
-		} else {
-			if (!buttonON) {
-				buttonON = true;
-			}
-		}
-	}
-}
-
-/**
- * Runs a loop until the inputed number sequence matches the PIN. PB8, PB9, PA6 are PIN numbers and
- * PA7 is the enter button. The loop will stop once the PIN is correct, and will print to console otherwise.
- * By Robin Yan.
- */
-_Bool password(int pin) {
-	int input = 0;
-	_Bool correct = false;
-	int waitCounter = 0;
-	int waitThreshold = 200000;
-	int numAttempts = 0;
-	int maxAttempts = 3;
-
-	while (!correct && maxAttempts > numAttempts) {
-		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_8) && waitCounter > waitThreshold) {
-			input *= 10;
-			input += 1;
-			printf("Current Input: %d\n\r", input);
-			waitCounter = 0;
-		}
-		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_9) && waitCounter > waitThreshold) {
-			input *= 10;
-			input += 2;
-			printf("Current Input: %d\n\r", input);
-			waitCounter = 0;
-		}
-		if (HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_6) && waitCounter > waitThreshold) {
-			input *= 10;
-			input += 3;
-			printf("Current Input: %d\n\r", input);
-			waitCounter = 0;
-		}
-
-		/* When enter is pressed */
-		if (HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_7) && waitCounter > waitThreshold) {
-			waitCounter = 0;
-			numAttempts++;
-			if (input == pin) {
-				//correct = true;
-				printf("Password Authentication Complete. \n\r");
-			} else {
-				printf("Incorrect Password. Remaining Tries: %d\n\r", maxAttempts - numAttempts);
-				input = 0;
-			}
-		}
-
-		/* Stop counting to save memory */
-		if (waitCounter <= waitThreshold) {
-			waitCounter++;
-		}
-	}
-	//random comment
-	return correct;
-}
-
+  * @brief System Clock Configuration
+  * @retval None
+  */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};

@@ -68,7 +68,7 @@ int main(void)
   //counter(buttonON, count);
   turnLed();
 
-  if (1) {
+  if (pass) {
 	  //Send a signal to the other STM to stop their timer
   } else {
 	  //Send a signal to the other STM to immediately start the speaker
@@ -80,7 +80,6 @@ void turnLed() {
 	while (1) {
 		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_8)) {
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-			printf("ButtonHeld");
 		} else {
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
 		}
