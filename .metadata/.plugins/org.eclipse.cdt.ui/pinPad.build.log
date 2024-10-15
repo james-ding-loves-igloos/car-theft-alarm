@@ -1,0 +1,10 @@
+22:43:09 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13068	    104	   1976	  15148	   3b2c	pinPad.elf
+Finished building: default.size.stdout
+ 
+
+22:43:09 Build Finished. 0 errors, 0 warnings. (took 417ms)
+
