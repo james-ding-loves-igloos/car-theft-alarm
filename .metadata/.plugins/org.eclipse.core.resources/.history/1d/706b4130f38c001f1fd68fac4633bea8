@@ -64,13 +64,12 @@ int main(void)
   int pin = 13221;
 
   /* Actual Program Run Here */
-  _Bool pass = password(pin);
+  //_Bool pass = password(pin);
   //counter(buttonON, count);
-  //turnLed();
+  turnLed();
 
-  if (pass) {
-	  turnLed();
-	  printf("%d", pass);
+  if (1) {
+	  //Send a signal to the other STM to stop their timer
   } else {
 	  //Send a signal to the other STM to immediately start the speaker
   }
@@ -78,14 +77,14 @@ int main(void)
 }
 
 void turnLed() {
-//	while (1) {
-//		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_8)) {
+	while (1) {
+		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_8)) {
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-//			printf("ButtonHeld");
-//		} else {
-//			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-//		}
-//	}
+			printf("ButtonHeld");
+		} else {
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+		}
+	}
 }
 
 /**
@@ -155,7 +154,7 @@ _Bool password(int pin) {
 			waitCounter = 0;
 			numAttempts++;
 			if (input == pin) {
-				correct = true;
+				//correct = true;
 				printf("Password Authentication Complete. \n\r");
 			} else {
 				printf("Incorrect Password. Remaining Tries: %d\n\r", maxAttempts - numAttempts);

@@ -66,11 +66,11 @@ int main(void)
   /* Actual Program Run Here */
   _Bool pass = password(pin);
   //counter(buttonON, count);
-  //turnLed();
+  turnLed();
 
   if (pass) {
 	  turnLed();
-	  printf("%d", pass);
+	  printf(pass);
   } else {
 	  //Send a signal to the other STM to immediately start the speaker
   }
