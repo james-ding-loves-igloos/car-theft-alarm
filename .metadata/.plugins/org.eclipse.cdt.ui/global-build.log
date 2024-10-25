@@ -245,3 +245,418 @@ arm-none-eabi-size  pinPad.elf
   13160	    104	   1976	  15240	   3b88	pinPad.elf
 Finished building: default.size.stdout
  
+12:44:36 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13160	    104	   1976	  15240	   3b88	pinPad.elf
+Finished building: default.size.stdout
+ 
+15:54:38 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13692	    104	   1976	  15772	   3d9c	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:05:48 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'spamClick':
+../Core/Src/main.c:173:24: error: lvalue required as decrement operand
+  173 |                 counter--;
+      |                        ^~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:06:41 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13820	    104	   1976	  15900	   3e1c	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:08:35 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13796	    104	   1976	  15876	   3e04	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:09:26 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13800	    104	   1976	  15880	   3e08	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:10:37 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13772	    104	   1976	  15852	   3dec	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:11:17 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13772	    104	   1976	  15852	   3dec	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:11:54 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13772	    104	   1976	  15852	   3dec	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:13:30 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13816	    104	   1976	  15896	   3e18	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:14:15 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13816	    104	   1976	  15896	   3e18	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:15:00 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13816	    104	   1976	  15896	   3e18	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:16:26 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13820	    104	   1976	  15900	   3e1c	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:18:41 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13828	    104	   1976	  15908	   3e24	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:19:30 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13828	    104	   1976	  15908	   3e24	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:20:36 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13828	    104	   1976	  15908	   3e24	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:20:59 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13828	    104	   1976	  15908	   3e24	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:22:17 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13828	    104	   1976	  15908	   3e24	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:23:32 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13844	    104	   1976	  15924	   3e34	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:24:22 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13828	    104	   1976	  15908	   3e24	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:24:39 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13828	    104	   1976	  15908	   3e24	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:26:38 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13840	    104	   1976	  15920	   3e30	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:27:41 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13828	    104	   1976	  15908	   3e24	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:28:52 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13840	    104	   1976	  15920	   3e30	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:29:34 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:30:09 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:31:05 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:31:42 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:33:15 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:34:13 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:36:51 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:37:36 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:48:31 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+16:52:12 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:54:13 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+16:55:06 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
+17:01:06 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13852	    104	   1976	  15932	   3e3c	pinPad.elf
+Finished building: default.size.stdout
+ 
