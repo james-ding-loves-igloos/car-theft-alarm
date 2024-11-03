@@ -32,10 +32,12 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 
 void counter();
+void buzzerLedBar(int frequency);
 void ledBar(int n);
 _Bool password(int pin);
 void turnLed(_Bool on);
-void spamClick();
+void spamClick(_Bool increase);
+void sendSignal(_Bool on, _Bool passAttempted);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -62,6 +64,9 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
 
+  //HALL EFFECT SENSOR
+  sendSignal(true, false);
+
   /* The actual PIN but in reverse. Must only be 1's, 2's, and 3's */
   int pin = 13221;
 
@@ -72,17 +77,66 @@ int main(void)
 
   if (pass) {
 	  turnLed(true);
+	  sendSignal(false, true);
 	  printf("%d", pass);
+	  spamClick(true);
 	  counter();
+
+
   } else {
 	  //Send a signal to the other STM to immediately start the speaker
-
-	  spamClick();
+	  sendSignal(true, true);
+	  spamClick(false);
   }
 
 }
 
+/* ------------------------------------- Other Methods ------------------------------------------ */
 
+/**
+ * Sends a signal through PC2 and PC3. When the security routine cycle is activated, on should be true, and password authentication or failure will make passAttempted true.
+ * When on is true and passAttempted is true, then the user has failed authentication and the speaker should start playing right away.
+ * When on is false and passAttempted is true, then the user has passed authentication and the speaker + timer should be disabled.
+ */
+void sendSignal(_Bool on, _Bool passAttempted) {
+	if (on) {
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
+	} else {
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
+	}
+	if (passAttempted) {
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_SET);
+	} else {
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_RESET);
+	}
+}
+
+
+
+/**
+ * Flashes the all the LEDs on the LED bar 5 times
+ */
+void buzzerLedBar(int frequency) {
+	int flashes = 5;
+	int counter = 0;
+	while (flashes > 0) {
+		if (counter <= frequency) {
+			ledBar(0);
+
+		} else if (counter <= 2*frequency) {
+			ledBar(10);
+		} else {
+			counter = 0;
+			flashes--;
+		}
+
+		counter++;
+	}
+}
+
+/**
+ * Turns the LED bar on a specific number of nodes in order. Maximum 10 nodes and minumum 0 nodes.
+ */
 void ledBar(int n) {
 
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET); //1
@@ -123,14 +177,16 @@ void ledBar(int n) {
 }
 
 /**
- * Sets the status LED to on
+ * Sets the status LED to on, and sends a signal out of PC3
  * By Robin Yan.
  */
 void turnLed(_Bool on) {
 	if (on) {
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_SET);
 	} else {
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_RESET);
 	}
 
 }
@@ -175,14 +231,18 @@ void counter() {
  * Fills the ledBar when the PA12 is active, and depletes the ledBar else wise
  * By Robin Yan.
  */
-void spamClick() {
+void spamClick(_Bool increase) {
 	int base = 50000;
 	int count = base;
+
+	if	(increase) {
+		count = 0;
+	}
 
 	while(1) {
 		count--;
 
-		if (!HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_6)) {
+		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_6) || increase) {
 			//count = base;
 			count += 2;
 		}
@@ -191,6 +251,10 @@ void spamClick() {
 			count = 0;
 		} else if (count > base) {
 			count = base;
+			if (increase) {
+				buzzerLedBar(20000);
+				return;
+			}
 		}
 		ledBar(count/(base/10));
 	}
@@ -242,6 +306,7 @@ _Bool password(int pin) {
 				printf("Password Authentication Complete. \n\r");
 			} else {
 				printf("Incorrect Password. Remaining Tries: %d\n\r", maxAttempts - numAttempts);
+				buzzerLedBar(10000);
 				input = 0;
 			}
 			ledBar(maxAttempts - numAttempts);
@@ -257,6 +322,8 @@ _Bool password(int pin) {
 	//random comment
 	return correct;
 }
+
+/* ---------------------------------- System Items ------------------------------------------- */
 
 void SystemClock_Config(void)
 {
@@ -407,7 +474,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  	  /* STATUS LED */
+  	  /* STATUS LED AND STM32 COMMUNICATION */
 
   /*Configure GPIO pin : PB13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;
@@ -415,6 +482,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC3 PC2 */
+  GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_2;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

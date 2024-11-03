@@ -32,10 +32,12 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 
 void counter();
+void buzzerLedBar();
 void ledBar(int n);
 _Bool password(int pin);
-void turnLed();
-void spamClick();
+void turnLed(_Bool on);
+void spamClick(_Bool increase);
+void sendSignal(_Bool on, _Bool passAttempted);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -62,6 +64,9 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
 
+  //HALL EFFECT SENSOR
+  sendSignal(true, false);
+
   /* The actual PIN but in reverse. Must only be 1's, 2's, and 3's */
   int pin = 13221;
 
@@ -71,30 +76,82 @@ int main(void)
   //turnLed();
 
   if (pass) {
-	  turnLed();
+	  turnLed(true);
+	  sendSignal(false, true);
 	  printf("%d", pass);
+	  spamClick(true);
 	  counter();
+
+
   } else {
 	  //Send a signal to the other STM to immediately start the speaker
-
-	  spamClick();
+	  sendSignal(true, true);
+	  spamClick(false);
   }
 
 }
 
+/* ------------------------------------- Other Methods ------------------------------------------ */
+
+/**
+ * Sends a signal through PC2 and PC3. When the security routine cycle is activated, on should be true, and password authentication or failure will make passAttempted true.
+ * When on is true and passAttempted is true, then the user has failed authentication and the speaker should start playing right away.
+ * When on is false and passAttempted is true, then the user has passed authentication and the speaker + timer should be disabled.
+ */
+void sendSignal(_Bool on, _Bool passAttempted) {
+	if (on) {
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
+	} else {
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
+	}
+	if (passAttempted) {
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_SET);
+	} else {
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_RESET);
+	}
+}
+
+
+
+/**
+ * Flashes the all the LEDs on the LED bar 5 times
+ */
+void buzzerLedBar() {
+	int flashes = 5;
+	int frequency = 10000;
+	int counter = 0;
+	while (flashes > 0) {
+		if (counter <= frequency) {
+			ledBar(0);
+
+		} else if (counter <= 2*frequency) {
+			ledBar(10);
+		} else {
+			counter = 0;
+			flashes--;
+		}
+
+		counter++;
+	}
+}
+
+/**
+ * Turns the LED bar on a specific number of nodes in order. Maximum 10 nodes and minumum 0 nodes.
+ */
 void ledBar(int n) {
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
 
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET); //1
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET); //2
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_RESET); //3
 
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_RESET); //4
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_RESET); //5
+
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET); //6
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, GPIO_PIN_RESET); //7
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET); //8
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_RESET); //9
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET); //10
 
 	if (n > 0) {
 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);
@@ -103,29 +160,36 @@ void ledBar(int n) {
 	} if (n > 2) {
 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_5, GPIO_PIN_SET);
 	} if (n > 3) {
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_SET);
 	} if (n > 4) {
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
 	} if (n > 5) {
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
 	} if (n > 6) {
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, GPIO_PIN_SET);
 	} if (n > 7) {
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET);
 	} if (n > 8) {
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, GPIO_PIN_SET);
 	} if (n > 9) {
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
 	}
 
 }
 
 /**
- * Sets the status LED to on
+ * Sets the status LED to on, and sends a signal out of PC3
  * By Robin Yan.
  */
-void turnLed() {
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+void turnLed(_Bool on) {
+	if (on) {
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_SET);
+	} else {
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_RESET);
+	}
+
 }
 
 /**
@@ -161,28 +225,38 @@ void counter() {
 			count = 10;
 		}
 		ledBar(count);
-
-		if (HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_7)) {
-			return;
-		}
 	}
 }
 
-void spamClick() {
-	int count = 10;
+/**
+ * Fills the ledBar when the PA12 is active, and depletes the ledBar else wise
+ * By Robin Yan.
+ */
+void spamClick(_Bool increase) {
+	int base = 50000;
+	int count = base;
+
+	if	(increase) {
+		count = 0;
+	}
+
 	while(1) {
 		count--;
 
-		if (HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_12)) {
-			count = 10;
+		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_6) || increase) {
+			//count = base;
+			count += 2;
 		}
 
 		if(count < 1) {
 			count = 0;
-		} else if (count > 10) {
-			count = 10;
+		} else if (count > base) {
+			count = base;
+			if (increase) {
+				return;
+			}
 		}
-		ledBar(count);
+		ledBar(count/(base/10));
 	}
 
 
@@ -200,6 +274,8 @@ _Bool password(int pin) {
 	int waitThreshold = 200000;
 	int numAttempts = 0;
 	int maxAttempts = 3;
+
+	ledBar(maxAttempts - numAttempts);
 
 	while (!correct && maxAttempts > numAttempts) {
 		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_8) && waitCounter > waitThreshold) {
@@ -230,18 +306,24 @@ _Bool password(int pin) {
 				printf("Password Authentication Complete. \n\r");
 			} else {
 				printf("Incorrect Password. Remaining Tries: %d\n\r", maxAttempts - numAttempts);
+				buzzerLedBar();
 				input = 0;
 			}
+			ledBar(maxAttempts - numAttempts);
 		}
 
 		/* Stop counting to save memory */
 		if (waitCounter <= waitThreshold) {
 			waitCounter++;
 		}
+
+
 	}
 	//random comment
 	return correct;
 }
+
+/* ---------------------------------- System Items ------------------------------------------- */
 
 void SystemClock_Config(void)
 {
@@ -354,34 +436,55 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA6 PA7 PA12 */
-  GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_12;
+  /* ----------------------------------------INPUT PINS---------------------------------------------------- */
+
+  /*Configure GPIO pins : PA6 PA7*/
+  GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_7;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB8 PB9 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
+  /*Configure GPIO pins : PB8 PB9 PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB4 PB5 PB6 PB10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_10|GPIO_PIN_4|GPIO_PIN_5;
+  /* ----------------------------------------OUTPUT PINS---------------------------------------------------- */
+  	  /* LED BAR */
+
+  /*Configure GPIO pin : PC8 PC6 PC5 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_8;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PB12 PB2 PB1 PB15 PB14 */
+  GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_15|GPIO_PIN_14;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PA9 PA8 PA10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_8;
+  /*Configure GPIO pin : PA11 PA12 */
+  GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PC7 PC8 PC6 PC5 */
-  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8;
+  	  /* STATUS LED AND STM32 COMMUNICATION */
+
+  /*Configure GPIO pin : PB13 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC3 PC2 */
+  GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_2;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
