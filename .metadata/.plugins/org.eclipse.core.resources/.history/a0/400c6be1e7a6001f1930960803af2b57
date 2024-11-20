@@ -32,12 +32,15 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 
 void counter();
-void buzzerLedBar();
+void buzzerLedBar(int frequency);
 void ledBar(int n);
 _Bool password(int pin);
 void turnLed(_Bool on);
-void spamClick();
+void spamClick(_Bool increase);
 void sendSignal(_Bool on, _Bool passAttempted);
+_Bool hallEffectSensor();
+_Bool unlimitedPassword(int pin);
+void flashLed(int frequency);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -64,26 +67,43 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
 
-  //HALL EFFECT SENSOR
-  sendSignal(true, false);
-
   /* The actual PIN but in reverse. Must only be 1's, 2's, and 3's */
   int pin = 13221;
 
   /* Actual Program Run Here */
-  _Bool pass = password(pin);
-  //counter(buttonON, count);
-  //turnLed();
+  while (1) {
+	  sendSignal(false, false);
+	  while (!hallEffectSensor()) {
+	  	  buzzerLedBar(10000);
+  	  }
+  	  sendSignal(true, false);
 
-  if (pass) {
-	  turnLed(true);
-	  sendSignal(false, true);
-	  printf("%d", pass);
-	  counter();
-  } else {
-	  //Send a signal to the other STM to immediately start the speaker
-	  sendSignal(true, true);
-	  spamClick();
+  	  _Bool pass = password(pin);
+
+  	  if (pass) {
+	  	  turnLed(true);
+	  	  sendSignal(false, true);
+	  	  printf("%d", pass);
+	  	  spamClick(true);
+	  	  ledBar(0);
+	  	  unlimitedPassword(pin);
+	  	  spamClick(true);
+	  	  ledBar(0);
+	  	  while (!hallEffectSensor()) {
+	  		  flashLed(200000);
+	  	  }
+	  	  while (hallEffectSensor()) {
+	  		  flashLed(50000);
+	  	  }
+  	  } else {
+  		  //Send a signal to the other STM to immediately start the speaker
+
+	  	  //spamClick(false);
+	  	  while (true) {
+	  		  printf("here!");
+	  		  sendSignal(true, true);
+	  	  }
+  	  }
   }
 
 }
@@ -108,14 +128,41 @@ void sendSignal(_Bool on, _Bool passAttempted) {
 	}
 }
 
+/**
+ * @return true if magnet is out of range
+ */
+_Bool hallEffectSensor() {
+	if (HAL_GPIO_ReadPin (GPIOC, GPIO_PIN_10)) {
+		return true;
+	}
+	return false;
+}
 
+/**
+ * Flashes the activation LED
+ */
+void flashLed(int frequency) {
+	int flashes = 1;
+	int counter = 0;
+	while (flashes > 0) {
+	if (counter <= frequency) {
+		turnLed(true);
+		} else if (counter <= 2*frequency) {
+			turnLed(false);
+		} else {
+			counter = 0;
+			flashes--;
+		}
+
+		counter++;
+	}
+}
 
 /**
  * Flashes the all the LEDs on the LED bar 5 times
  */
-void buzzerLedBar() {
+void buzzerLedBar(int frequency) {
 	int flashes = 5;
-	int frequency = 10000;
 	int counter = 0;
 	while (flashes > 0) {
 		if (counter <= frequency) {
@@ -229,14 +276,18 @@ void counter() {
  * Fills the ledBar when the PA12 is active, and depletes the ledBar else wise
  * By Robin Yan.
  */
-void spamClick() {
+void spamClick(_Bool increase) {
 	int base = 50000;
 	int count = base;
+
+	if	(increase) {
+		count = 0;
+	}
 
 	while(1) {
 		count--;
 
-		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_6)) {
+		if (!hallEffectSensor() || increase) {
 			//count = base;
 			count += 2;
 		}
@@ -245,6 +296,12 @@ void spamClick() {
 			count = 0;
 		} else if (count > base) {
 			count = base;
+			if (increase) {
+				buzzerLedBar(20000);
+				return;
+			} else {
+				return;
+			}
 		}
 		ledBar(count/(base/10));
 	}
@@ -296,7 +353,7 @@ _Bool password(int pin) {
 				printf("Password Authentication Complete. \n\r");
 			} else {
 				printf("Incorrect Password. Remaining Tries: %d\n\r", maxAttempts - numAttempts);
-				buzzerLedBar();
+				buzzerLedBar(10000);
 				input = 0;
 			}
 			ledBar(maxAttempts - numAttempts);
@@ -307,6 +364,60 @@ _Bool password(int pin) {
 			waitCounter++;
 		}
 
+
+	}
+	//random comment
+	return correct;
+}
+
+_Bool unlimitedPassword(int pin) {
+	int input = 0;
+	_Bool correct = false;
+	int waitCounter = 0;
+	int waitThreshold = 200000;
+	//int numAttempts = 0;
+	//int maxAttempts = 3;
+	//ledBar(maxAttempts - numAttempts);
+
+	while (!correct) {
+		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_8) && waitCounter > waitThreshold) {
+			input *= 10;
+			input += 1;
+			printf("Current Input: %d\n\r", input);
+			waitCounter = 0;
+		}
+		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_9) && waitCounter > waitThreshold) {
+			input *= 10;
+			input += 2;
+			printf("Current Input: %d\n\r", input);
+			waitCounter = 0;
+		}
+		if (HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_6) && waitCounter > waitThreshold) {
+			input *= 10;
+			input += 3;
+			printf("Current Input: %d\n\r", input);
+			waitCounter = 0;
+		}
+
+		/* When enter is pressed */
+		if (HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_7) && waitCounter > waitThreshold) {
+			waitCounter = 0;
+			//numAttempts++;
+			if (input == pin) {
+				correct = true;
+				printf("Password Authentication Complete. \n\r");
+			} else {
+				printf("Incorrect Password. Remaining Tries: %d\n\r");
+				buzzerLedBar(10000);
+				input = 0;
+			}
+			ledBar(0);
+		}
+
+		/* Stop counting to save memory */
+		if (waitCounter <= waitThreshold) {
+			waitCounter++;
+		}
 
 	}
 	//random comment
@@ -434,11 +545,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB8 PB9 PB6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_6;
+  /*Configure GPIO pins : PB8 PB9*/
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	  /* HALL EFFECT SENSOR */
+
+  /*Configure GPIO pin : PC10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* ----------------------------------------OUTPUT PINS---------------------------------------------------- */
   	  /* LED BAR */
@@ -479,6 +598,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

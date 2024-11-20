@@ -282,8 +282,7 @@ void counter() {
 }
 
 /**
- * Fills the ledBar or depletes the ledBar based on parameter
- * @param increase a boolean
+ * Fills the ledBar when the PA12 is active, and depletes the ledBar else wise
  * By Robin Yan.
  */
 void gradientLedBar(_Bool increase) {
@@ -294,7 +293,7 @@ void gradientLedBar(_Bool increase) {
 		count = 0;
 	}
 
-	while(true) {
+	while(count < base) {
 		count--;
 
 		if (increase) {
@@ -304,10 +303,6 @@ void gradientLedBar(_Bool increase) {
 
 		if(count < 1) {
 			count = 0;
-			break;
-		} else if (count > base) {
-			count = base;
-			break;
 		}
 		ledBar(count/(base/10));
 	}

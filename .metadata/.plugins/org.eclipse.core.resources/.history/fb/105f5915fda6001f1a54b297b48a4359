@@ -36,7 +36,7 @@ void buzzerLedBar(int frequency);
 void ledBar(int n);
 _Bool password(int pin);
 void turnLed(_Bool on);
-void gradientLedBar(_Bool increase);
+void spamClick(_Bool increase);
 void sendSignal(_Bool on, _Bool passAttempted);
 _Bool hallEffectSensor();
 _Bool unlimitedPassword(int pin);
@@ -72,45 +72,37 @@ int main(void)
 
   /* Actual Program Run Here */
   while (1) {
-
-	  /* Waiting for Hall Effect Sensor */
 	  sendSignal(false, false);
 	  while (!hallEffectSensor()) {
-	  	  ledBar(10);
+	  	  buzzerLedBar(10000);
   	  }
   	  sendSignal(true, false);
 
-  	  /* Run password attempt */
   	  _Bool pass = password(pin);
 
   	  if (pass) {
-  		  /* Send signal to other STM to stop and reset timer */
 	  	  turnLed(true);
 	  	  sendSignal(false, true);
 	  	  printf("%d", pass);
-	  	  gradientLedBar(true);
+	  	  spamClick(true);
 	  	  ledBar(0);
-
-  	  } else {
-  		  /* Send a signal to the other STM to immediately start the speaker. Enter password to disable */
-	  	  gradientLedBar(false);
-	  	  sendSignal(true, true);
 	  	  unlimitedPassword(pin);
-	  	  gradientLedBar(true);
-	  	  turnLed(true);
+	  	  spamClick(true);
 	  	  ledBar(0);
-	  	  sendSignal(false, true);
-  	  }
+	  	  while (!hallEffectSensor()) {
+	  		  flashLed(200000);
+	  	  }
+	  	  while (hallEffectSensor()) {
+	  		  flashLed(50000);
+	  	  }
+  	  } else {
+  		  //Send a signal to the other STM to immediately start the speaker
 
-  	  /* After authentication, type password again to reset routine */
-  	  unlimitedPassword(pin);
-  	  gradientLedBar(true);
-  	  ledBar(0);
-  	  while (!hallEffectSensor()) {
-  		  flashLed(200000);
-  	  }
-  	  while (hallEffectSensor()) {
-  		  flashLed(50000);
+	  	  //spamClick(false);
+	  	  while (true) {
+	  		  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
+	  		  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_SET);
+	  	  }
   	  }
   }
 
@@ -147,8 +139,7 @@ _Bool hallEffectSensor() {
 }
 
 /**
- * Flashes the activation LED at a specified frequency
- * @param frequency the
+ * Flashes the activation LED
  */
 void flashLed(int frequency) {
 	int flashes = 1;
@@ -282,11 +273,10 @@ void counter() {
 }
 
 /**
- * Fills the ledBar or depletes the ledBar based on parameter
- * @param increase a boolean
+ * Fills the ledBar when the PA12 is active, and depletes the ledBar else wise
  * By Robin Yan.
  */
-void gradientLedBar(_Bool increase) {
+void spamClick(_Bool increase) {
 	int base = 50000;
 	int count = base;
 
@@ -294,27 +284,29 @@ void gradientLedBar(_Bool increase) {
 		count = 0;
 	}
 
-	while(true) {
+	while(1) {
 		count--;
 
-		if (increase) {
+		if (!hallEffectSensor() || increase) {
 			//count = base;
 			count += 2;
 		}
 
 		if(count < 1) {
 			count = 0;
-			break;
 		} else if (count > base) {
 			count = base;
-			break;
+			if (increase) {
+				buzzerLedBar(20000);
+				return;
+			} else {
+				return;
+			}
 		}
 		ledBar(count/(base/10));
 	}
 
-	if (increase) {
-		buzzerLedBar(20000);
-	}
+
 }
 
 /**

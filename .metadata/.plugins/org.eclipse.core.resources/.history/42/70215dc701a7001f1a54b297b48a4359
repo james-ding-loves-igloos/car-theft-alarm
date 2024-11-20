@@ -32,12 +32,15 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 
 void counter();
-void buzzerLedBar();
+void buzzerLedBar(int frequency);
 void ledBar(int n);
 _Bool password(int pin);
 void turnLed(_Bool on);
-void spamClick();
-void sendSignal(_Bool activate);
+void gradientLedBar(_Bool increase);
+void sendSignal(_Bool on, _Bool passAttempted);
+_Bool hallEffectSensor();
+_Bool unlimitedPassword(int pin);
+void flashLed(int frequency);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -64,26 +67,51 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
 
-  //HALL EFFECT SENSOR
-  sendSignal(true);
-
   /* The actual PIN but in reverse. Must only be 1's, 2's, and 3's */
   int pin = 13221;
 
   /* Actual Program Run Here */
-  _Bool pass = password(pin);
-  //counter(buttonON, count);
-  //turnLed();
+  while (1) {
 
-  if (pass) {
-	  turnLed(true);
-	  sendSignal(false);
-	  printf("%d", pass);
-	  counter();
-  } else {
-	  //Send a signal to the other STM to immediately start the speaker
+	  /* Waiting for Hall Effect Sensor */
+	  sendSignal(false, false);
+	  while (!hallEffectSensor()) {
+	  	  ledBar(10);
+  	  }
+  	  sendSignal(true, false);
 
-	  spamClick();
+  	  /* Run password attempt */
+  	  _Bool pass = password(pin);
+
+  	  if (pass) {
+  		  /* Send signal to other STM to stop and reset timer */
+	  	  turnLed(true);
+	  	  sendSignal(false, true);
+	  	  printf("%d", pass);
+	  	  gradientLedBar(true);
+	  	  ledBar(0);
+
+  	  } else {
+  		  /* Send a signal to the other STM to immediately start the speaker. Enter password to disable */
+	  	  gradientLedBar(false);
+	  	  sendSignal(true, true);
+	  	  unlimitedPassword(pin);
+	  	  gradientLedBar(true);
+	  	  turnLed(true);
+	  	  ledBar(0);
+	  	  sendSignal(false, true);
+  	  }
+
+  	  /* After authentication, type password again to reset routine */
+  	  unlimitedPassword(pin);
+  	  gradientLedBar(true);
+  	  ledBar(0);
+  	  while (!hallEffectSensor()) {
+  		  flashLed(200000);
+  	  }
+  	  while (hallEffectSensor()) {
+  		  flashLed(50000);
+  	  }
   }
 
 }
@@ -91,25 +119,59 @@ int main(void)
 /* ------------------------------------- Other Methods ------------------------------------------ */
 
 /**
- * Sends a high signal through PC3 or PC2. When activate is true, PC3 is low and PC2 is high. When activate is false, PC3 is high and PC2 is low.
+ * Sends a signal through PC2 and PC3. When the security routine cycle is activated, on should be true, and password authentication or failure will make passAttempted true.
+ * When on is true and passAttempted is true, then the user has failed authentication and the speaker should start playing right away.
+ * When on is false and passAttempted is true, then the user has passed authentication and the speaker + timer should be disabled.
  */
-void sendSignal(_Bool activate) {
-	if (activate) {
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_RESET);
+void sendSignal(_Bool on, _Bool passAttempted) {
+	if (on) {
 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);
 	} else {
 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);
+	}
+	if (passAttempted) {
 		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_SET);
+	} else {
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3, GPIO_PIN_RESET);
 	}
 }
 
+/**
+ * @return true if magnet is out of range
+ */
+_Bool hallEffectSensor() {
+	if (HAL_GPIO_ReadPin (GPIOC, GPIO_PIN_10)) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Flashes the activation LED at a specified frequency
+ * @param frequency the
+ */
+void flashLed(int frequency) {
+	int flashes = 1;
+	int counter = 0;
+	while (flashes > 0) {
+	if (counter <= frequency) {
+		turnLed(true);
+		} else if (counter <= 2*frequency) {
+			turnLed(false);
+		} else {
+			counter = 0;
+			flashes--;
+		}
+
+		counter++;
+	}
+}
 
 /**
  * Flashes the all the LEDs on the LED bar 5 times
  */
-void buzzerLedBar() {
+void buzzerLedBar(int frequency) {
 	int flashes = 5;
-	int frequency = 10000;
 	int counter = 0;
 	while (flashes > 0) {
 		if (counter <= frequency) {
@@ -223,27 +285,31 @@ void counter() {
  * Fills the ledBar when the PA12 is active, and depletes the ledBar else wise
  * By Robin Yan.
  */
-void spamClick() {
+void gradientLedBar(_Bool increase) {
 	int base = 50000;
 	int count = base;
 
-	while(1) {
+	if	(increase) {
+		count = 0;
+	}
+
+	while(count < base) {
 		count--;
 
-		if (!HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_6)) {
+		if (!hallEffectSensor() || increase) {
 			//count = base;
 			count += 2;
 		}
 
 		if(count < 1) {
 			count = 0;
-		} else if (count > base) {
-			count = base;
 		}
 		ledBar(count/(base/10));
 	}
 
-
+	if (increase) {
+		buzzerLedBar(20000);
+	}
 }
 
 /**
@@ -290,7 +356,7 @@ _Bool password(int pin) {
 				printf("Password Authentication Complete. \n\r");
 			} else {
 				printf("Incorrect Password. Remaining Tries: %d\n\r", maxAttempts - numAttempts);
-				buzzerLedBar();
+				buzzerLedBar(10000);
 				input = 0;
 			}
 			ledBar(maxAttempts - numAttempts);
@@ -301,6 +367,60 @@ _Bool password(int pin) {
 			waitCounter++;
 		}
 
+
+	}
+	//random comment
+	return correct;
+}
+
+_Bool unlimitedPassword(int pin) {
+	int input = 0;
+	_Bool correct = false;
+	int waitCounter = 0;
+	int waitThreshold = 200000;
+	//int numAttempts = 0;
+	//int maxAttempts = 3;
+	//ledBar(maxAttempts - numAttempts);
+
+	while (!correct) {
+		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_8) && waitCounter > waitThreshold) {
+			input *= 10;
+			input += 1;
+			printf("Current Input: %d\n\r", input);
+			waitCounter = 0;
+		}
+		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_9) && waitCounter > waitThreshold) {
+			input *= 10;
+			input += 2;
+			printf("Current Input: %d\n\r", input);
+			waitCounter = 0;
+		}
+		if (HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_6) && waitCounter > waitThreshold) {
+			input *= 10;
+			input += 3;
+			printf("Current Input: %d\n\r", input);
+			waitCounter = 0;
+		}
+
+		/* When enter is pressed */
+		if (HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_7) && waitCounter > waitThreshold) {
+			waitCounter = 0;
+			//numAttempts++;
+			if (input == pin) {
+				correct = true;
+				printf("Password Authentication Complete. \n\r");
+			} else {
+				printf("Incorrect Password. Remaining Tries: %d\n\r");
+				buzzerLedBar(10000);
+				input = 0;
+			}
+			ledBar(0);
+		}
+
+		/* Stop counting to save memory */
+		if (waitCounter <= waitThreshold) {
+			waitCounter++;
+		}
 
 	}
 	//random comment
@@ -428,11 +548,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB8 PB9 PB6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_6;
+  /*Configure GPIO pins : PB8 PB9*/
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	  /* HALL EFFECT SENSOR */
+
+  /*Configure GPIO pin : PC10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* ----------------------------------------OUTPUT PINS---------------------------------------------------- */
   	  /* LED BAR */
@@ -473,6 +601,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

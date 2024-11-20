@@ -1,9 +1,9 @@
-20:36:20 **** Incremental Build of configuration Debug for project pinPad ****
+00:41:35 **** Incremental Build of configuration Debug for project pinPad ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'unlimitedPassword':
-../Core/Src/main.c:404:79: warning: format '%d' expects a matching 'int' argument [-Wformat=]
-  404 |                                 printf("Incorrect Password. Remaining Tries: %d\n\r");
+../Core/Src/main.c:418:79: warning: format '%d' expects a matching 'int' argument [-Wformat=]
+  418 |                                 printf("Incorrect Password. Remaining Tries: %d\n\r");
       |                                                                              ~^
       |                                                                               |
       |                                                                               int
@@ -13,11 +13,11 @@ Finished building target: pinPad.elf
 arm-none-eabi-size  pinPad.elf 
 arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
    text	   data	    bss	    dec	    hex	filename
-  14600	    104	   1976	  16680	   4128	pinPad.elf
+  14612	    104	   1976	  16692	   4134	pinPad.elf
 Finished building: default.size.stdout
  
 Finished building: pinPad.list
  
 
-20:36:22 Build Finished. 0 errors, 1 warnings. (took 1s.557ms)
+00:41:37 Build Finished. 0 errors, 1 warnings. (took 1s.938ms)
 

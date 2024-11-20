@@ -76,7 +76,7 @@ int main(void)
 	  /* Waiting for Hall Effect Sensor */
 	  sendSignal(false, false);
 	  while (!hallEffectSensor()) {
-	  	  ledBar(10);
+	  	  buzzerLedBar(10000);
   	  }
   	  sendSignal(true, false);
 
@@ -98,7 +98,6 @@ int main(void)
 	  	  unlimitedPassword(pin);
 	  	  gradientLedBar(true);
 	  	  turnLed(true);
-	  	  ledBar(0);
 	  	  sendSignal(false, true);
   	  }
 
@@ -282,8 +281,7 @@ void counter() {
 }
 
 /**
- * Fills the ledBar or depletes the ledBar based on parameter
- * @param increase a boolean
+ * Fills the ledBar when the PA12 is active, and depletes the ledBar else wise
  * By Robin Yan.
  */
 void gradientLedBar(_Bool increase) {
@@ -294,20 +292,16 @@ void gradientLedBar(_Bool increase) {
 		count = 0;
 	}
 
-	while(true) {
+	while(count < base) {
 		count--;
 
-		if (increase) {
+		if (!hallEffectSensor() || increase) {
 			//count = base;
 			count += 2;
 		}
 
 		if(count < 1) {
 			count = 0;
-			break;
-		} else if (count > base) {
-			count = base;
-			break;
 		}
 		ledBar(count/(base/10));
 	}
