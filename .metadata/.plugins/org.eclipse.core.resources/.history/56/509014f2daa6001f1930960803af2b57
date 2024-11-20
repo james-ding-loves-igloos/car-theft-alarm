@@ -39,8 +39,6 @@ void turnLed(_Bool on);
 void spamClick(_Bool increase);
 void sendSignal(_Bool on, _Bool passAttempted);
 _Bool hallEffectSensor();
-_Bool unlimitedPassword(int pin);
-void flashLed(int frequency);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -67,39 +65,35 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
 
+  //HALL EFFECT SENSOR
+  while (!hallEffectSensor()) {
+	  //turnLed(hallEffectSensor());
+	  //ledBar(10);
+	  buzzerLedBar(10000);
+  }
+
+  sendSignal(true, false);
+
   /* The actual PIN but in reverse. Must only be 1's, 2's, and 3's */
   int pin = 13221;
 
   /* Actual Program Run Here */
-  while (1) {
-	  sendSignal(false, false);
-	  while (!hallEffectSensor()) {
-	  	  buzzerLedBar(10000);
-  	  }
-  	  sendSignal(true, false);
+  _Bool pass = password(pin);
+  //counter(buttonON, count);
+  //turnLed();
 
-  	  _Bool pass = password(pin);
+  if (pass) {
+	  turnLed(true);
+	  sendSignal(false, true);
+	  printf("%d", pass);
+	  spamClick(true);
+	  counter();
 
-  	  if (pass) {
-	  	  turnLed(true);
-	  	  sendSignal(false, true);
-	  	  printf("%d", pass);
-	  	  spamClick(true);
-	  	  ledBar(0);
-	  	  unlimitedPassword(pin);
-	  	  spamClick(true);
-	  	  ledBar(0);
-	  	  while (!hallEffectSensor()) {
-	  		  flashLed(200000);
-	  	  }
-	  	  while (hallEffectSensor()) {
-	  		  flashLed(50000);
-	  	  }
-  	  } else {
-  		  //Send a signal to the other STM to immediately start the speaker
-  		  sendSignal(true, true);
-	  	  spamClick(false);
-  	  }
+
+  } else {
+	  //Send a signal to the other STM to immediately start the speaker
+	  sendSignal(true, true);
+	  spamClick(false);
   }
 
 }
@@ -132,26 +126,6 @@ _Bool hallEffectSensor() {
 		return true;
 	}
 	return false;
-}
-
-/**
- * Flashes the activation LED
- */
-void flashLed(int frequency) {
-	int flashes = 1;
-	int counter = 0;
-	while (flashes > 0) {
-	if (counter <= frequency) {
-		turnLed(true);
-		} else if (counter <= 2*frequency) {
-			turnLed(false);
-		} else {
-			counter = 0;
-			flashes--;
-		}
-
-		counter++;
-	}
 }
 
 /**
@@ -358,60 +332,6 @@ _Bool password(int pin) {
 			waitCounter++;
 		}
 
-
-	}
-	//random comment
-	return correct;
-}
-
-_Bool unlimitedPassword(int pin) {
-	int input = 0;
-	_Bool correct = false;
-	int waitCounter = 0;
-	int waitThreshold = 200000;
-	//int numAttempts = 0;
-	//int maxAttempts = 3;
-	//ledBar(maxAttempts - numAttempts);
-
-	while (!correct) {
-		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_8) && waitCounter > waitThreshold) {
-			input *= 10;
-			input += 1;
-			printf("Current Input: %d\n\r", input);
-			waitCounter = 0;
-		}
-		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_9) && waitCounter > waitThreshold) {
-			input *= 10;
-			input += 2;
-			printf("Current Input: %d\n\r", input);
-			waitCounter = 0;
-		}
-		if (HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_6) && waitCounter > waitThreshold) {
-			input *= 10;
-			input += 3;
-			printf("Current Input: %d\n\r", input);
-			waitCounter = 0;
-		}
-
-		/* When enter is pressed */
-		if (HAL_GPIO_ReadPin (GPIOA, GPIO_PIN_7) && waitCounter > waitThreshold) {
-			waitCounter = 0;
-			//numAttempts++;
-			if (input == pin) {
-				correct = true;
-				printf("Password Authentication Complete. \n\r");
-			} else {
-				printf("Incorrect Password. Remaining Tries: %d\n\r");
-				buzzerLedBar(10000);
-				input = 0;
-			}
-			ledBar(0);
-		}
-
-		/* Stop counting to save memory */
-		if (waitCounter <= waitThreshold) {
-			waitCounter++;
-		}
 
 	}
 	//random comment

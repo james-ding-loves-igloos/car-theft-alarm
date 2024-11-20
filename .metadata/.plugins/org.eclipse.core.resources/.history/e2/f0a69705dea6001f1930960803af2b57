@@ -72,7 +72,6 @@ int main(void)
 
   /* Actual Program Run Here */
   while (1) {
-	  sendSignal(false, false);
 	  while (!hallEffectSensor()) {
 	  	  buzzerLedBar(10000);
   	  }
@@ -90,10 +89,10 @@ int main(void)
 	  	  spamClick(true);
 	  	  ledBar(0);
 	  	  while (!hallEffectSensor()) {
-	  		  flashLed(200000);
+	  		  flashLed(100000);
 	  	  }
 	  	  while (hallEffectSensor()) {
-	  		  flashLed(50000);
+	  		  flashLed(500000);
 	  	  }
   	  } else {
   		  //Send a signal to the other STM to immediately start the speaker
@@ -138,7 +137,7 @@ _Bool hallEffectSensor() {
  * Flashes the activation LED
  */
 void flashLed(int frequency) {
-	int flashes = 1;
+	int flashes = 2;
 	int counter = 0;
 	while (flashes > 0) {
 	if (counter <= frequency) {

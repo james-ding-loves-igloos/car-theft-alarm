@@ -40,7 +40,7 @@ void spamClick(_Bool increase);
 void sendSignal(_Bool on, _Bool passAttempted);
 _Bool hallEffectSensor();
 _Bool unlimitedPassword(int pin);
-void flashLed(int frequency);
+void flashLed();
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -72,7 +72,6 @@ int main(void)
 
   /* Actual Program Run Here */
   while (1) {
-	  sendSignal(false, false);
 	  while (!hallEffectSensor()) {
 	  	  buzzerLedBar(10000);
   	  }
@@ -88,12 +87,11 @@ int main(void)
 	  	  ledBar(0);
 	  	  unlimitedPassword(pin);
 	  	  spamClick(true);
-	  	  ledBar(0);
 	  	  while (!hallEffectSensor()) {
-	  		  flashLed(200000);
+	  		  flashLed();
 	  	  }
 	  	  while (hallEffectSensor()) {
-	  		  flashLed(50000);
+	  		  flashLed();
 	  	  }
   	  } else {
   		  //Send a signal to the other STM to immediately start the speaker
@@ -137,8 +135,9 @@ _Bool hallEffectSensor() {
 /**
  * Flashes the activation LED
  */
-void flashLed(int frequency) {
-	int flashes = 1;
+void flashLed() {
+	int frequency = 100000;
+	int flashes = 2;
 	int counter = 0;
 	while (flashes > 0) {
 	if (counter <= frequency) {

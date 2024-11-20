@@ -72,7 +72,6 @@ int main(void)
 
   /* Actual Program Run Here */
   while (1) {
-	  sendSignal(false, false);
 	  while (!hallEffectSensor()) {
 	  	  buzzerLedBar(10000);
   	  }
@@ -90,7 +89,7 @@ int main(void)
 	  	  spamClick(true);
 	  	  ledBar(0);
 	  	  while (!hallEffectSensor()) {
-	  		  flashLed(200000);
+	  		  flashLed(100000);
 	  	  }
 	  	  while (hallEffectSensor()) {
 	  		  flashLed(50000);

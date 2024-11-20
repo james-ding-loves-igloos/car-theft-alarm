@@ -72,7 +72,6 @@ int main(void)
 
   /* Actual Program Run Here */
   while (1) {
-	  sendSignal(false, false);
 	  while (!hallEffectSensor()) {
 	  	  buzzerLedBar(10000);
   	  }
