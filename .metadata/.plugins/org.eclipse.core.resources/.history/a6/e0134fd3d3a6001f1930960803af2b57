@@ -66,10 +66,8 @@ int main(void)
   MX_USART2_UART_Init();
 
   //HALL EFFECT SENSOR
-  while (!hallEffectSensor()) {
-	  //turnLed(hallEffectSensor());
-	  //ledBar(10);
-	  buzzerLedBar(10000);
+  while (1) {
+	  turnLed(hallEffectSensor());
   }
 
   sendSignal(true, false);
@@ -257,7 +255,7 @@ void spamClick(_Bool increase) {
 	while(1) {
 		count--;
 
-		if (!hallEffectSensor() || increase) {
+		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_6) || increase) {
 			//count = base;
 			count += 2;
 		}
@@ -459,8 +457,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB8 PB9*/
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
+  /*Configure GPIO pins : PB8 PB9 PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -468,10 +466,10 @@ static void MX_GPIO_Init(void)
 	  /* HALL EFFECT SENSOR */
 
   /*Configure GPIO pin : PC10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+  //GPIO_InitStruct.Pin = GPIO_PIN_10;
+  //GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  //GPIO_InitStruct.Pull = GPIO_PULLUP;
+  //HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* ----------------------------------------OUTPUT PINS---------------------------------------------------- */
   	  /* LED BAR */

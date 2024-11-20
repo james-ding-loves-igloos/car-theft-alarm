@@ -38,7 +38,7 @@ _Bool password(int pin);
 void turnLed(_Bool on);
 void spamClick(_Bool increase);
 void sendSignal(_Bool on, _Bool passAttempted);
-_Bool hallEffectSensor();
+_Bool hallEffectSensor() {
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -67,9 +67,7 @@ int main(void)
 
   //HALL EFFECT SENSOR
   while (!hallEffectSensor()) {
-	  //turnLed(hallEffectSensor());
-	  //ledBar(10);
-	  buzzerLedBar(10000);
+
   }
 
   sendSignal(true, false);
@@ -122,10 +120,7 @@ void sendSignal(_Bool on, _Bool passAttempted) {
  * @return true if magnet is out of range
  */
 _Bool hallEffectSensor() {
-	if (HAL_GPIO_ReadPin (GPIOC, GPIO_PIN_10)) {
-		return true;
-	}
-	return false;
+	return HAL_GPIO_ReadPin (GPIOC, GPIO_PIN_10);
 }
 
 /**
@@ -257,7 +252,7 @@ void spamClick(_Bool increase) {
 	while(1) {
 		count--;
 
-		if (!hallEffectSensor() || increase) {
+		if (HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_6) || increase) {
 			//count = base;
 			count += 2;
 		}
@@ -459,19 +454,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB8 PB9*/
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
+  /*Configure GPIO pins : PB8 PB9 PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-	  /* HALL EFFECT SENSOR */
-
-  /*Configure GPIO pin : PC10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* ----------------------------------------OUTPUT PINS---------------------------------------------------- */
   	  /* LED BAR */
@@ -513,6 +500,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
+  	  /* HALL EFFECT SENSOR */
+
+  /*Configure GPIO pin : PC10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

@@ -801,3 +801,485 @@ Finished building: default.size.stdout
  
 Finished building: pinPad.list
  
+18:32:34 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f401retx.d" -MT"Core/Startup/startup_stm32f401retx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Startup/startup_stm32f401retx.o" "../Core/Startup/startup_stm32f401retx.s"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+../Core/Src/main.c: In function 'hallEffectSensor':
+../Core/Src/main.c:55:5: warning: 'main' is normally a non-static function [-Wmain]
+   55 | int main(void)
+      |     ^~~~
+../Core/Src/main.c:385:13: error: invalid storage class for function 'MX_USART2_UART_Init'
+  385 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:418:13: error: invalid storage class for function 'MX_GPIO_Init'
+  418 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:532:1: error: expected declaration or statement at end of input
+  532 | }
+      | ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:31:13: warning: 'MX_GPIO_Init' used but never defined
+   31 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:32:13: warning: 'MX_USART2_UART_Init' used but never defined
+   32 | static void MX_USART2_UART_Init(void);
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'hallEffectSensor':
+../Core/Src/main.c:551: warning: control reaches end of non-void function [-Wreturn-type]
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:523:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  523 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:418:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  418 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:385:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  385 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:338:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  338 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:280:7: warning: 'password' defined but not used [-Wunused-function]
+  280 | _Bool password(int pin) {
+      |       ^~~~~~~~
+../Core/Src/main.c:244:6: warning: 'spamClick' defined but not used [-Wunused-function]
+  244 | void spamClick(_Bool increase) {
+      |      ^~~~~~~~~
+../Core/Src/main.c:209:6: warning: 'counter' defined but not used [-Wunused-function]
+  209 | void counter() {
+      |      ^~~~~~~
+../Core/Src/main.c:193:6: warning: 'turnLed' defined but not used [-Wunused-function]
+  193 | void turnLed(_Bool on) {
+      |      ^~~~~~~
+../Core/Src/main.c:122:7: warning: 'hallEffectSensor' defined but not used [-Wunused-function]
+  122 | _Bool hallEffectSensor() {
+      |       ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:106:6: warning: 'sendSignal' defined but not used [-Wunused-function]
+  106 | void sendSignal(_Bool on, _Bool passAttempted) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:55:5: warning: 'main' defined but not used [-Wunused-function]
+   55 | int main(void)
+      |     ^~~~
+../Core/Src/main.c:45:5: warning: '__io_putchar' defined but not used [-Wunused-function]
+   45 | int __io_putchar(int ch) {
+      |     ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+18:33:58 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'hallEffectSensor':
+../Core/Src/main.c:55:5: warning: 'main' is normally a non-static function [-Wmain]
+   55 | int main(void)
+      |     ^~~~
+../Core/Src/main.c:385:13: error: invalid storage class for function 'MX_USART2_UART_Init'
+  385 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:418:13: error: invalid storage class for function 'MX_GPIO_Init'
+  418 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:532:1: error: expected declaration or statement at end of input
+  532 | }
+      | ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:31:13: warning: 'MX_GPIO_Init' used but never defined
+   31 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:32:13: warning: 'MX_USART2_UART_Init' used but never defined
+   32 | static void MX_USART2_UART_Init(void);
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'hallEffectSensor':
+../Core/Src/main.c:551: warning: control reaches end of non-void function [-Wreturn-type]
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:523:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  523 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:418:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  418 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:385:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  385 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:338:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  338 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:280:7: warning: 'password' defined but not used [-Wunused-function]
+  280 | _Bool password(int pin) {
+      |       ^~~~~~~~
+../Core/Src/main.c:244:6: warning: 'spamClick' defined but not used [-Wunused-function]
+  244 | void spamClick(_Bool increase) {
+      |      ^~~~~~~~~
+../Core/Src/main.c:209:6: warning: 'counter' defined but not used [-Wunused-function]
+  209 | void counter() {
+      |      ^~~~~~~
+../Core/Src/main.c:193:6: warning: 'turnLed' defined but not used [-Wunused-function]
+  193 | void turnLed(_Bool on) {
+      |      ^~~~~~~
+../Core/Src/main.c:122:7: warning: 'hallEffectSensor' defined but not used [-Wunused-function]
+  122 | _Bool hallEffectSensor() {
+      |       ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:106:6: warning: 'sendSignal' defined but not used [-Wunused-function]
+  106 | void sendSignal(_Bool on, _Bool passAttempted) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:55:5: warning: 'main' defined but not used [-Wunused-function]
+   55 | int main(void)
+      |     ^~~~
+../Core/Src/main.c:45:5: warning: '__io_putchar' defined but not used [-Wunused-function]
+   45 | int __io_putchar(int ch) {
+      |     ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+18:35:31 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'hallEffectSensor':
+../Core/Src/main.c:55:5: warning: 'main' is normally a non-static function [-Wmain]
+   55 | int main(void)
+      |     ^~~~
+../Core/Src/main.c:385:13: error: invalid storage class for function 'MX_USART2_UART_Init'
+  385 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:418:13: error: invalid storage class for function 'MX_GPIO_Init'
+  418 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:533:1: error: expected declaration or statement at end of input
+  533 | }
+      | ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:31:13: warning: 'MX_GPIO_Init' used but never defined
+   31 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:32:13: warning: 'MX_USART2_UART_Init' used but never defined
+   32 | static void MX_USART2_UART_Init(void);
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'hallEffectSensor':
+../Core/Src/main.c:552: warning: control reaches end of non-void function [-Wreturn-type]
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:524:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  524 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:418:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  418 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:385:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  385 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:338:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  338 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:280:7: warning: 'password' defined but not used [-Wunused-function]
+  280 | _Bool password(int pin) {
+      |       ^~~~~~~~
+../Core/Src/main.c:244:6: warning: 'spamClick' defined but not used [-Wunused-function]
+  244 | void spamClick(_Bool increase) {
+      |      ^~~~~~~~~
+../Core/Src/main.c:209:6: warning: 'counter' defined but not used [-Wunused-function]
+  209 | void counter() {
+      |      ^~~~~~~
+../Core/Src/main.c:193:6: warning: 'turnLed' defined but not used [-Wunused-function]
+  193 | void turnLed(_Bool on) {
+      |      ^~~~~~~
+../Core/Src/main.c:122:7: warning: 'hallEffectSensor' defined but not used [-Wunused-function]
+  122 | _Bool hallEffectSensor() {
+      |       ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:106:6: warning: 'sendSignal' defined but not used [-Wunused-function]
+  106 | void sendSignal(_Bool on, _Bool passAttempted) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:55:5: warning: 'main' defined but not used [-Wunused-function]
+   55 | int main(void)
+      |     ^~~~
+../Core/Src/main.c:45:5: warning: '__io_putchar' defined but not used [-Wunused-function]
+   45 | int __io_putchar(int ch) {
+      |     ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+18:35:47 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'hallEffectSensor':
+../Core/Src/main.c:55:5: warning: 'main' is normally a non-static function [-Wmain]
+   55 | int main(void)
+      |     ^~~~
+../Core/Src/main.c:385:13: error: invalid storage class for function 'MX_USART2_UART_Init'
+  385 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:418:13: error: invalid storage class for function 'MX_GPIO_Init'
+  418 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:533:1: error: expected declaration or statement at end of input
+  533 | }
+      | ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:31:13: warning: 'MX_GPIO_Init' used but never defined
+   31 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:32:13: warning: 'MX_USART2_UART_Init' used but never defined
+   32 | static void MX_USART2_UART_Init(void);
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'hallEffectSensor':
+../Core/Src/main.c:552: warning: control reaches end of non-void function [-Wreturn-type]
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:524:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  524 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:418:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  418 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:385:13: warning: 'MX_USART2_UART_Init' defined but not used [-Wunused-function]
+  385 | static void MX_USART2_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:338:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  338 | void SystemClock_Config(void)
+      |      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:280:7: warning: 'password' defined but not used [-Wunused-function]
+  280 | _Bool password(int pin) {
+      |       ^~~~~~~~
+../Core/Src/main.c:244:6: warning: 'spamClick' defined but not used [-Wunused-function]
+  244 | void spamClick(_Bool increase) {
+      |      ^~~~~~~~~
+../Core/Src/main.c:209:6: warning: 'counter' defined but not used [-Wunused-function]
+  209 | void counter() {
+      |      ^~~~~~~
+../Core/Src/main.c:193:6: warning: 'turnLed' defined but not used [-Wunused-function]
+  193 | void turnLed(_Bool on) {
+      |      ^~~~~~~
+../Core/Src/main.c:122:7: warning: 'hallEffectSensor' defined but not used [-Wunused-function]
+  122 | _Bool hallEffectSensor() {
+      |       ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:106:6: warning: 'sendSignal' defined but not used [-Wunused-function]
+  106 | void sendSignal(_Bool on, _Bool passAttempted) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:55:5: warning: 'main' defined but not used [-Wunused-function]
+   55 | int main(void)
+      |     ^~~~
+../Core/Src/main.c:45:5: warning: '__io_putchar' defined but not used [-Wunused-function]
+   45 | int __io_putchar(int ch) {
+      |     ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+18:36:36 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14248	    104	   1976	  16328	   3fc8	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+18:38:42 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-size  pinPad.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14248	    104	   1976	  16328	   3fc8	pinPad.elf
+Finished building: default.size.stdout
+ 
+18:44:00 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14192	    104	   1976	  16272	   3f90	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+18:51:26 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14192	    104	   1976	  16272	   3f90	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:01:22 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14248	    104	   1976	  16328	   3fc8	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:04:24 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+   8040	     12	   1644	   9696	   25e0	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:10:20 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+   8068	     12	   1644	   9724	   25fc	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:17:58 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14276	    104	   1976	  16356	   3fe4	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:21:24 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14276	    104	   1976	  16356	   3fe4	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:24:04 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14276	    104	   1976	  16356	   3fe4	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:27:28 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14276	    104	   1976	  16356	   3fe4	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:28:31 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14280	    104	   1976	  16360	   3fe8	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:29:25 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14284	    104	   1976	  16364	   3fec	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:29:46 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14284	    104	   1976	  16364	   3fec	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 
+19:36:34 **** Incremental Build of configuration Debug for project pinPad ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "pinPad.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Robin\Documents\GitHub\car-theft-alarm\pinPad\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pinPad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pinPad.elf
+ 
+arm-none-eabi-size  pinPad.elf 
+arm-none-eabi-objdump -h -S pinPad.elf  > "pinPad.list"
+   text	   data	    bss	    dec	    hex	filename
+  14284	    104	   1976	  16364	   3fec	pinPad.elf
+Finished building: default.size.stdout
+ 
+Finished building: pinPad.list
+ 

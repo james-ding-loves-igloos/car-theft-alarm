@@ -66,10 +66,9 @@ int main(void)
   MX_USART2_UART_Init();
 
   //HALL EFFECT SENSOR
-  while (!hallEffectSensor()) {
+  while (hallEffectSensor()) {
 	  //turnLed(hallEffectSensor());
-	  //ledBar(10);
-	  buzzerLedBar(10000);
+	  ledBar(10);
   }
 
   sendSignal(true, false);
