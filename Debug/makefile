@@ -60,8 +60,8 @@ all: main-build
 main-build: Speaker\ Car\ Alarm.elf secondary-outputs
 
 # Tool invocations
-Speaker\ Car\ Alarm.elf Speaker\ Car\ Alarm.map: $(OBJS) $(USER_OBJS) C:\Users\James\STM32CubeIDE\workspace_1.16.1\Speaker\ Car\ Alarm\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Speaker Car Alarm.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\James\STM32CubeIDE\workspace_1.16.1\Speaker Car Alarm\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Speaker Car Alarm.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Speaker\ Car\ Alarm.elf Speaker\ Car\ Alarm.map: $(OBJS) $(USER_OBJS) C:\Users\James\STM32CubeIDE\workspace_1.16.1\ECE\ 198\car-theft-alarm\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Speaker Car Alarm.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\James\STM32CubeIDE\workspace_1.16.1\ECE 198\car-theft-alarm\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Speaker Car Alarm.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -59,7 +59,7 @@ void DMA1_Stream4_IRQHandler(void);
 void TIM4_IRQHandler(void);
 void SPI2_IRQHandler(void);
 /* USER CODE BEGIN EFP */
-
+unsigned int get_count(void);
 /* USER CODE END EFP */
 
 #ifdef __cplusplus

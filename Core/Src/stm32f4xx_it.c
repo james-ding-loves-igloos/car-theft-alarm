@@ -49,6 +49,8 @@ size_t i = 0;
 
 uint16_t arr[] = {0, 0};
 
+unsigned int count = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -237,11 +239,14 @@ void TIM4_IRQHandler(void)
   HAL_I2S_Transmit(&hi2s2, arr, 2, HAL_MAX_DELAY);
 
   if (i + 1 < size) {
-	  ++i;
+	  i++;
   }
   else {
 	  i = 0;
   }
+
+  // timer
+  count += 2;
 
   /* USER CODE END TIM4_IRQn 1 */
 }
@@ -260,5 +265,8 @@ void SPI2_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
+unsigned int get_count(void) {
+	return count;
+}
 
 /* USER CODE END 1 */
