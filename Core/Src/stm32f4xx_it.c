@@ -51,16 +51,29 @@ uint16_t arr[] = {0, 0};
 
 unsigned int count = 0;
 
+char speaker_should_play = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
-
+void play_speaker(void);
+void stop_speaker(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void play_speaker(void) {
 
+	speaker_should_play = 1;
+
+}
+
+void stop_speaker(void) {
+
+	speaker_should_play = 0;
+
+}
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -236,7 +249,11 @@ void TIM4_IRQHandler(void)
   arr[0] = ((unsigned short int) data[i]) * 150;
   arr[1] = ((unsigned short int) data[i]) * 150;
 
-  HAL_I2S_Transmit(&hi2s2, arr, 2, HAL_MAX_DELAY);
+  if(speaker_should_play == 1) {
+
+	  HAL_I2S_Transmit(&hi2s2, arr, 2, HAL_MAX_DELAY);
+
+  }
 
   if (i + 1 < size) {
 	  i++;

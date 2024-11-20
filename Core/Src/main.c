@@ -47,7 +47,7 @@ TIM_HandleTypeDef htim4;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-const double PIN_PAD_ENTER_TIME = 10.0;
+const double PIN_PAD_ENTER_TIME = 17.0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -58,23 +58,11 @@ static void MX_USART2_UART_Init(void);
 static void MX_I2S2_Init(void);
 static void MX_TIM4_Init(void);
 /* USER CODE BEGIN PFP */
-void stop_speaker(void);
-void play_speaker(void);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void stop_speaker(void) {
-
-	HAL_TIM_Base_Stop_IT(&htim4);
-
-}
-
-void play_speaker(void) {
-
-	HAL_TIM_Base_Start_IT(&htim4);
-
-}
 /* USER CODE END 0 */
 
 /**
@@ -111,11 +99,12 @@ int main(void)
   MX_I2S2_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start_IT(&htim4);
 
-  double period = 1.0 / (((double) HAL_RCC_GetSysClockFreq()) / 5000.0);
+  const double period = 1.0 / (((double) HAL_RCC_GetSysClockFreq()) / 5000.0);
   double time = 0;
-
   double door_open_time = 1;
+
   char timer_started = 0;
   char speaker_started = 0;
 
@@ -125,6 +114,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while(1) {
 
+	  //Advance the time.
 	  time = get_count() * period;
 
 	  //When the hall effect sensor detects that the door is opened:
@@ -146,15 +136,47 @@ int main(void)
 	  }
 
 	  //Check if the user is taking too long to enter in the pin:
-	  if(speaker_started == 0 && time - timer_started > PIN_PAD_ENTER_TIME) {
+	  if(speaker_started == 0 && timer_started == 1 && time - door_open_time > PIN_PAD_ENTER_TIME) {
 
 		  play_speaker();
 		  speaker_started = 1;
 
 	  }
 
-	  char msg[20];
-	  sprintf(msg, "%Lf\r\n", time);
+	  //Check if the user made too many bad inputs:
+	  //(note that this is implemented as when both signals are high)
+	  if(speaker_started == 0 && timer_started == 1 && !HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_8) && !HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_9)) {
+
+		  play_speaker();
+		  speaker_started = 1;
+
+	  }
+
+	  char msg_true[20] = {'t', 'r', 'u', 'e', ' ', ' ', ' ', '\0'};
+	  char msg_false[20] = {'f', 'a', 'l', 's', 'e', ' ', ' ', ' ', '\0'};
+	  char msg_eight[20] = {'P', 'B', '8', ':', ' ', '\0'};
+	  char msg_nine[20] = {'P', 'B', '9', ':', ' ', '\0'};
+	  char msg[20] = {'\r', '\n', '\0'};
+	  HAL_UART_Transmit(&huart2, msg_eight, strlen(msg_eight), HAL_MAX_DELAY);
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_8)) {
+
+		  HAL_UART_Transmit(&huart2, msg_true, strlen(msg_true), HAL_MAX_DELAY);
+
+	  } else {
+
+		  HAL_UART_Transmit(&huart2, msg_false, strlen(msg_false), HAL_MAX_DELAY);
+
+	  }
+	  HAL_UART_Transmit(&huart2, msg_nine, strlen(msg_nine), HAL_MAX_DELAY);
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_9)) {
+
+		  HAL_UART_Transmit(&huart2, msg_true, strlen(msg_true), HAL_MAX_DELAY);
+
+	  } else {
+
+		  HAL_UART_Transmit(&huart2, msg_false, strlen(msg_false), HAL_MAX_DELAY);
+
+	  }
 	  HAL_UART_Transmit(&huart2, msg, strlen(msg), HAL_MAX_DELAY);
 
     /* USER CODE END WHILE */
